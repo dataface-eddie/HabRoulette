@@ -5,4 +5,6 @@ CREATE TABLE habit.dim_habit
     habit_description VARCHAR(1000),
     archived BOOL
     )
-    
+;
+ALTER TABLE habit.dim_habit
+ADD CONSTRAINT unique_habit_name_constraint UNIQUE (habit_name);
