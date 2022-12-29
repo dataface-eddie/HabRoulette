@@ -10,7 +10,7 @@ BEGIN
      INSERT INTO habit.dim_habit
     (habit_name, habit_description, archived)
     VALUES
-    (new_habit_name, new_habit_description, TRUE)
+    (new_habit_name, new_habit_description, FALSE)
     ;
 -- Load dim_habit_time_allocation
     INSERT INTO habit.dim_habit_time_allocation
