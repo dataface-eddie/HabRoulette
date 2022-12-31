@@ -2,7 +2,8 @@ CREATE OR REPLACE PROCEDURE new_habit(
     new_habit_name VARCHAR(100)
     , new_habit_description VARCHAR(1000)
     , new_minutes_needed INT
-    , new_score INT)
+    , new_score INT
+    , new_category VARCHAR(100))
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -27,6 +28,12 @@ BEGIN
       SELECT id
         , new_habit_name
         , new_score
+    FROM habit.dim_habit
+    WHERE habit_name = new_habit_name
+--Load dim_habit_category
+    INSERT INTO habit.dim_habit_categoty id
+        , new_habit_name
+        , new_category
     FROM habit.dim_habit
     WHERE habit_name = new_habit_name
     ;
