@@ -10,7 +10,8 @@ BEGIN
     SELECT id
         , habit_name
         , minutes_needed
-        , score 
+        , score
+        , category
         , NOW() AS insert_time
     FROM habit.v_habit_generator
     WHERE minutes_needed <= minutes_available
