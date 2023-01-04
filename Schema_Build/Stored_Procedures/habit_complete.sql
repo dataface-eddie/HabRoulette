@@ -7,6 +7,7 @@ BEGIN
         , habit_name
         , minutes_needed
         , score
+        , category
         , user_completed::BOOL AS completed
         , insert_time
     FROM habit.fact_habit_event_stg;
