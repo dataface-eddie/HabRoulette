@@ -15,7 +15,6 @@ BEGIN
         , NOW() AS insert_time
     FROM habit.v_habit_generator
     WHERE minutes_needed <= minutes_available
-        AND archived IS FALSE
     ORDER BY RANDOM()
     LIMIT 1;
     
