@@ -3,11 +3,12 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
 INSERT INTO habit.fact_habit_event
-(id, habit_name, minutes_needed, score, completed, insert_time)
+(id, habit_name, minutes_needed, score, , category, completed, insert_time)
  SELECT dh.id
         , dh.habit_name
         , dhta.minutes_needed
         , dhs.score
+        , dhc.category
         , TRUE AS completed
         , NOW() AS insert_time
     FROM habit.dim_habit AS dh
@@ -15,6 +16,8 @@ INSERT INTO habit.fact_habit_event
         ON dh.id = dhta.id
     LEFT JOIN habit.dim_habit_score AS dhs
         ON dh.id = dhs.id
+    LEFT JOIN habit.dim_habit_category AS dhc
+     ON dh.id = dhc.id
     WHERE dh.habit_name = new_habit_name
     ;
 END;$$
